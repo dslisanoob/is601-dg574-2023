@@ -158,23 +158,6 @@ class DB:
                 except Error as e:
                     print("Error while connecting to MySQL", e)
                     raise e
-            else:  # old logic as fallback
-                data = re.findall(
-                    "mysql://(\w+):(\w+)@([\w\.]+):([\d]+)/([\w]+)", db_url)
-                if len(data) > 0:
-                    data = data[0]
-                    if len(data) >= 5:
-                        try:
-                            user, password, host, port, database = data
-                            DB.db = mysql.connector.connect(
-                                host=host, user=user, password=password, database=database, port=int(port))
-                        except Error as e:
-                            print("Error while connecting to MySQL", e)
-                            raise e
-                    else:
-                        raise Exception("Missing connection details")
-                else:
-                    raise Exception("Invalid connection string")
         # enable autocommit (quick fix for common issues)
         if DB.db:
             DB.db.autocommit = True
