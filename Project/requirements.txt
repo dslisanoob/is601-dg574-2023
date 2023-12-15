@@ -30,7 +30,6 @@ protobuf==4.21.12
 pyaes==1.6.1
 pyasn1==0.5.0
 pycountry==22.3.5
-pypiwin32==223
 Pyrogram==2.0.106
 PySocks==1.7.1
 pytest==7.4.3
@@ -41,8 +40,6 @@ rsa==4.9
 simplejson==3.19.1
 six==1.16.0
 soupsieve==2.5
-Telethon==1.29.3
-TgCrypto==1.2.5
 typish==1.9.3
 urllib3==2.0.7
 Werkzeug==3.0.1
