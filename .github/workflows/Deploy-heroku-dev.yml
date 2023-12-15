@@ -8,6 +8,8 @@ on:
     branches:
       - dev
       - Milestone1
+      - Milestone2
+      - Milestone3
 
 # Your workflows jobs.
 jobs:
