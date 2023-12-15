@@ -9,7 +9,7 @@ def search():
     organization_name = ""
     # DO NOT DELETE PROVIDED COMMENTS
     # TODO search-1 retrieve donation id as id, donor_firstname, donor_lastname, donor_email, organization_id, item_name, item_description, item_quantity, donation_date, comments, organization_name using a LEFT JOIN
-    #dg574-30/11/23
+    #dg574-12/05/23
     query = """
     SELECT d.id, d.donor_firstname, d.donor_lastname, d.donor_email, d.organization_id, 
            d.item_name, d.item_description, d.item_quantity, d.donation_date, d.comments, 
@@ -30,7 +30,7 @@ def search():
     # TODO search-8 append sorting if column and order are provided and within the allowed columns and order options (asc, desc)
     # TODO search-9 append limit (default 10) or limit greater than 1 and less than or equal to 100
     # TODO search-10 provide a proper error message if limit isn't a number or if it's out of bounds
-    #dg574-30/11/23
+    #dg574-12/05/23
     fn = request.args.get("donor_firstname")
     ln = request.args.get("donor_lastname")
     email = request.args.get("donor_email")
@@ -51,7 +51,7 @@ def search():
     if email:
         query += " AND d.donor_email LIKE %(donor_email)s"
         args["donor_email"] = f"%{email}%"
-    #dg574-30/11/23
+    #dg574-12/05/23
 
     if item_name:
         query += " AND d.item_name LIKE %(item_name)s"
@@ -81,10 +81,10 @@ def search():
             rows = result.rows
     except Exception as e:
         # TODO search-11 make message user friendly
-        #dg574-30/11/23
+        #dg574-12/05/23
         flash("There was an error retrieving donation data", "danger")
          # TODO search-12 if request args has organization identifier set organization_name variable to the correct name
-         #dg574-30/11/23
+         #dg574-12/05/23
 
     return render_template("list_donations.html", organization_name=organization_name, rows=rows, allowed_columns=allowed_columns)
 
@@ -102,7 +102,7 @@ def add():
         # TODO add-8 item_quantity is required and must be more than 0 (flash proper error message)
         # TODO add-9 donation_date is required and must be within the past 30 days
         # TODO add-10 comments are optional
-        #dg574-30/11/23
+        #dg574-12/05/23
         
         donor_firstname = request.form.get("donor_firstname")
         donor_lastname = request.form.get("donor_lastname")
@@ -113,7 +113,7 @@ def add():
         item_quantity = request.form.get("item_quantity")
         donation_date = request.form.get("donation_date")
         comments = request.form.get("comments")
-        #dg574-30/11/23
+        #dg574-12/05/23
 
         has_error = False
 
@@ -135,7 +135,7 @@ def add():
         if not organization_id:
             flash("Organization ID is required", "danger")
             has_error = True
-        #dg574-30/11/23
+        #dg574-12/05/23
 
         if not item_name:
             flash("Item Name is required", "danger")
@@ -166,13 +166,13 @@ def add():
                 INSERT INTO IS601_MP3_Donations (donor_firstname, donor_lastname, donor_email, item_name, item_description, item_quantity, donation_date, comments, organization_id)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, *[x for x in request.form.values()])# <-- TODO add-11 add query and add arguments
-                #dg574-30/11/23
+                #dg574-12/05/23
 
                 if result.status:
                     flash("Created Donation Record", "success")
             except Exception as e:
                 # TODO add-7 make message user friendly
-                #dg574-30/11/23
+                #dg574-12/05/23
                 import traceback
                 print(traceback.format_exc())
                 flash("There was an error creating the donation record", "danger")
@@ -183,7 +183,7 @@ def add():
 def edit():
     row = {}
      # TODO edit-1 request args id is required (flash proper error message)
-     #dg574-30/11/23
+     #dg574-12/05/23
 
     id = request.args.get("id")
 
@@ -204,7 +204,7 @@ def edit():
             # TODO add-9 item_quantity is required and must be more than 0 (flash proper error message)
             # TODO add-10 donation_date is required and must be within the past 30 days
             # TODO add-11 comments are optional
-            #dg574-30/11/23
+            #dg574-12/05/23
         donor_firstname = request.form.get("donor_firstname")
         donor_lastname = request.form.get("donor_lastname")
         donor_email = request.form.get("donor_email")
@@ -214,7 +214,7 @@ def edit():
         item_quantity = request.form.get("item_quantity")
         donation_date = request.form.get("donation_date")
         comments = request.form.get("comments")
-        #dg574-30/11/23
+        #dg574-12/05/23
 
         has_error = False
 
@@ -232,7 +232,7 @@ def edit():
         elif "@" not in donor_email:
             flash("Invalid email format", "danger")
             has_error = True
-        #dg574-30/11/23
+        #dg574-12/05/23
 
         if not organization_id:
             flash("Organization ID is required", "danger")
@@ -263,7 +263,7 @@ def edit():
         if not has_error:
             try:
                 # TODO edit-12 fill in proper update query
-                #dg574-30/11/23
+                #dg574-12/05/23
                 result = DB.update("""
                 UPDATE IS601_MP3_Donations SET
                 donor_firstname = %(donor_firstname)s,
@@ -282,12 +282,12 @@ def edit():
                     flash("Updated record", "success")
             except Exception as e:
                 # TODO edit-13 make this user-friendly
-                #dg574-30/11/23
+                #dg574-12/05/23
                 flash("There was an error updating the donation record", "danger")
 
     try:
         # TODO edit-14 fetch the updated data 
-        #dg574-30/11/23
+        #dg574-12/05/23
         result = DB.selectOne("""
         SELECT id, donor_firstname, donor_lastname, donor_email, organization_id, 
                item_name, item_description, item_quantity, donation_date, comments
@@ -299,7 +299,7 @@ def edit():
             row = result.row
     except Exception as e:
         # TODO edit-15 make this user-friendly
-        #dg574-30/11/23
+        #dg574-12/05/23
         flash("There was an error fetching donation data", "danger")
 
     return render_template("manage_donation.html", donation=row)
@@ -311,7 +311,7 @@ def delete():
     # TODO delete-3 ensure a flash message shows for successful delete
     # TODO delete-4 pass all argument except id to this route
     # TODO delete-5 redirect to donation search
-    #dg574-30/11/23
+    #dg574-12/05/23
     id = request.args.get("id")
 
     if not id:
@@ -320,7 +320,7 @@ def delete():
 
     try:
         # delete-2: Delete donation by id
-        #dg574-30/11/23
+        #dg574-12/05/23
         result = DB.delete("""
         DELETE FROM IS601_MP3_Donations
         WHERE id = %s
@@ -331,6 +331,6 @@ def delete():
     except Exception as e:
         flash("There was an error deleting the donation record", "danger")
         # return redirect(url_for("donations.search", **args))
-        #dg574-30/11/23
+        #dg574-12/05/23
 
     return redirect(url_for("donations.search"))

@@ -16,7 +16,7 @@
                 ensure all fields prefill with request arg data if provided
                 #}
             <!-- Organization Name Filter -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="name">Organization Name</label>
                 <input type="text" class="form-control" id="name" name="name"
@@ -24,16 +24,16 @@
             </div>
 
             <!-- Country/State Filter -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             {{ country_state_selector(layout="horizontal") }}
 
             <!-- Sort Filter -->
             {# TODO pass/set the columns that can be used for sort/filter (i.e. allowed_columns) #}
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             {{ sort_filter(cols=allowed_columns) }}
 
             <!-- Limit Filter -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="limit">Limit</label>
                 <input type="number" class="form-control" id="limit" name="limit"
@@ -64,7 +64,7 @@
             <tbody>
                 {# generate tr with td tags for each piece of data #}
                 {# don't show any id or organization_id columns #}
-                {#dg574-29/11/23#}
+                {#dg574-12/05/23#}
                 {# if the td is for website, display it as a link where the text is "website" and the url is the
                 website url #}
                 {# in the last column add the following
@@ -74,7 +74,7 @@
                 a delete button that passes the organization id and the request args to the organization delete route
                 #}
                 <!-- iterate over rows and generate proper tr and td elements with the data -->
-                {#dg574-29/11/23#}
+                {#dg574-12/05/23#}
                 {% for row in rows %}
                     <tr>
                         {% for col in allowed_columns %}

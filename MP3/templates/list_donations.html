@@ -19,9 +19,9 @@
                 ensure all fields prefill with request arg data if provided
                 #}
     
-                {#dg574-29/11/23#}
+                {#dg574-12/05/23#}
             <!-- Donor First Name -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="donor_firstname">Donor First Name</label>
                 <input type="text" class="form-control" id="donor_firstname" name="donor_firstname"
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Donor Last Name -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="donor_lastname">Donor Last Name</label>
                 <input type="text" class="form-control" id="donor_lastname" name="donor_lastname"
@@ -37,7 +37,7 @@
             </div>
 
             <!-- Donor Email -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="donor_email">Donor Email</label>
                 <input type="text" class="form-control" id="donor_email" name="donor_email"
@@ -45,7 +45,7 @@
             </div>
 
             <!-- Item Name -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="item_name">Item Name</label>
                 <input type="text" class="form-control" id="item_name" name="item_name"
@@ -53,13 +53,13 @@
             </div>
 
             <!-- Organization Dropdown -->
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             <div class="col">
                 <label class="visually-hidden" for="organization">Organization</label>
                 {{ organization_dropdown(request.args.get("organization")) or '' }}
             </div>
             {# TODO pass/set the columns that can be used for sort/filter (i.e. allowed_columns) #}
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
 
             <!-- Sort Filter -->
             {% macro sort_filter(cols) %}
@@ -105,7 +105,7 @@
                 {# generate th tags for each column to display #}
                 {# don't show any id or organization_id columns #}
                 {# IMPORTANT use table column names as the headings, replace _ with space via filter #}
-                {#dg574-29/11/23#}
+                {#dg574-12/05/23#}
                 {% for col in allowed_columns %}
                     {% if col not in ['id', 'organization_id'] %}
                         <th>{{ col|replace("_", " ") }}</th>
@@ -117,7 +117,7 @@
         <tbody>
             {# generate tr with td tags for each piece of data #}
             {# don't show any id or organization_id columns #}
-            {#dg574-29/11/23#}
+            {#dg574-12/05/23#}
             
             {% for row in rows %}
                 <tr>
