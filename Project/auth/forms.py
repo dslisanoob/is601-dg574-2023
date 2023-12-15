@@ -15,8 +15,8 @@ class AuthForm(FlaskForm):
     # shared form that groups most of our validations together to reduce repetition
     username = StringField("username", validators=[DataRequired(), Length(2, 30)])
     email = EmailField("email", validators=[DataRequired(), Email()])
-    password = PasswordField("password", validators=[DataRequired(), EqualTo('confirm', message='Passwords must match'), Length(8)])
-    confirm = PasswordField("confirm", validators=[DataRequired(),  EqualTo('password', message='Passwords must match'),Length(8)])
+    password = PasswordField("new password", validators=[DataRequired(), EqualTo('confirm', message='Passwords must match'), Length(8)])
+    confirm = PasswordField("confirm new password", validators=[DataRequired(),  EqualTo('password', message='Passwords must match'),Length(8)])
     def validate_username(form, field):
         print("checking ", field.data)
         is_valid_username(field.data)
@@ -45,11 +45,13 @@ class LoginForm(AuthForm):
         else:
             is_valid_username(email)
         return True
-                
+
 class ProfileForm(AuthForm):
     current_password = PasswordField("current password", validators=[Optional()])
-    password = PasswordField("password", validators=[Optional(), EqualTo('confirm', message='Passwords must match'), Length(8)])
-    confirm = PasswordField("confirm", validators=[Optional(),  EqualTo('password', message='Passwords must match'),Length(8)])
     # https://wtforms.readthedocs.io/en/3.0.x/forms/#form-inheritance
-    # removed override of password/confirm password due to conflicting behaviour with how WTForms replaced the DataRequired() with Optional
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__( *args, **kwargs)
+        # replace required validator with optional
+        self.password.validators[0]=Optional()
+        self.confirm.validators[0]=Optional()
     submit = SubmitField("Update")
