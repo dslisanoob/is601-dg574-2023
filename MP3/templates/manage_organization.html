@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %}{{ "Edit" if org.get("id") else "Create" }} Organization{% endblock %}
+{% block content %}
+{% from "country_state_selector.html" import country_state_selector %}
+
+<div class="container-fluid">
+    <div class="h1">{{ "Edit" if org.get("id") else "Create" }} Organization</div>
+    <div>
+        <form method="POST">
+            <!-- Organization Name -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="name" class="form-label">Organization Name</label>
+                <input type="text" class="form-control" id="name" name="name"
+                       value="{{ org.get('name') }}" required>
+            </div>
+
+            <!-- Organization Description -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description"
+                          rows="3">{{ org.get('description') }}</textarea>
+            </div>
+
+            <!-- Organization Address -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address"
+                       value="{{ org.get('address') }}" required>
+            </div>
+
+            <!-- Organization Website -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="website" class="form-label">Website</label>
+                <input type="text" class="form-control" id="website" name="website"
+                       value="{{ org.get('website') }}">
+            </div>
+
+            <!-- Organization City -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city"
+                       value="{{ org.get('city') }}" required>
+            </div>
+
+            <!-- Country/State Selection -->
+            {#dg574-12/05/23#}
+            {{ country_state_selector(country=org.get("country"), state=org.get("state")) }}
+
+            <!-- Organization Zip Code -->
+            {#dg574-12/05/23#}
+            <div class="mb-3">
+                <label for="zip" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" id="zip" name="zip"
+                       value="{{ org.get('zip') }}" required>
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Save Organization" />
+        </form>
+    </div>
+</div>
+{% endblock %}
