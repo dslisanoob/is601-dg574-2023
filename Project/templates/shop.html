@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block title %}Shop{% endblock %}
+
+<!-- content -->
+{% block content %}
+<div class="container-fluid">
+    <div class="h4">Shop</div>
+    <form class="row row-cols-lg-auto g-3 align-items-center" method="GET">
+        <div class="col-12">
+            <label class="visually-hidden" for="name">name</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Product Name"
+                value="{{request.args.get('name') or ''}}">
+        </div>
+        <div class="col-12">
+            <label class="visually-hidden" for="description">description</label>
+            <input type="text" name="description" class="form-control" id="description" placeholder="Description"
+                value="{{request.args.get('description') or ''}}">
+        </div>
+        {% with cols = allowed_columns %}
+        {% include "sort_filter.html" %}
+        {% endwith %}
+        <div class="col-12">
+            <label class="visually-hidden" for="limit">Limit</label>
+            <input class="form-control" type="number" min="1" max="100" id="limit" name="limit"
+                value="{{request.args.get('limit') or '25'}}" />
+        </div>
+        <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="Filter" />
+        </div>
+        <div class="col-12">
+            <a href="?" class="btn btn-secondary">Reset</a>
+        </div>
+    </form>
+
+    <!-- Product Grid -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+        {% for row in rows %}
+        <div class="col">
+            <div class="card h-100 text-bg-dark">
+                <img src="{{row['image']}}" class="card-img-top" alt="{{row['name']}}"
+                    style="object-fit: cover; height: 200px;"
+                    data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showFullImage(this.src)">
+
+                <div class="card-header">
+                    Stock: {{row["stock"]}}
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{row["name"]}}</h5>
+                    <p class="card-text">{{row["description"]}}</p>
+                    <a href="{{row['product_url']}}" target="_blank" class="btn btn-outline-light btn-sm">Original Link on Asos</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Cost: {{row["unit_price"]}}</small>
+                    <!-- [Forms for View, Edit, Add to Cart] -->
+                    <form action="{{url_for('shop.shop_item')}}" method="POST">
+                        <input type="hidden" name="id" value="{{row['id']}}" />
+                        <div class="d-grid mt-1">
+                            <input type="submit" value="View" class="btn btn-light" />
+                        </div>
+                    </form>
+                    {% if current_user.is_authenticated and current_user.has_role("Admin") %}
+                    <form action="{{url_for('admin.item')}}" method="POST">
+                        <input type="hidden" name="id" value="{{row['id']}}" />
+                        <div class="d-grid mt-1">
+                            <input type="submit" value="Edit" class="btn btn-light" />
+                        </div>
+                    </form>
+                    {% endif %}
+                    <form action="{{url_for('shop.cart')}}" method="POST">
+                        <input type="hidden" name="id" value="{{row['id']}}" />
+                        <input type="number" class="form-control" name="quantity" placeholder="1"/>
+                        <div class="d-grid mt-1">
+                            <input type="submit" value="+Add" class="btn btn-light" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+        <div class="modal-body">
+            <img id="fullImage" src="" class="img-fluid" alt="Full size">
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<script>
+function showFullImage(src) {
+    document.getElementById('fullImage').src = src;
+}
+</script>
+
+{% endblock %}
