@@ -1,0 +1,31 @@
+<table><tr><td> <em>Assignment: </em> Sample Flask App and Readings</td></tr>
+<tr><td> <em>Student: </em> Dhruv Gargi (dg574)</td></tr>
+<tr><td> <em>Generated: </em> 12/15/2023 12:15:38 AM</td></tr>
+<tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-007-F23/sample-flask-app-and-readings/grade/dg574" target="_blank">Grading</a></td></tr></table>
+<table><tr><td> <em>Instructions: </em> <ol><li>&nbsp;Follow the slides from class.&nbsp;</li><li>&nbsp;Get the sample app deployed to Heroku dev</li><li>&nbsp;Once finished with the slides create a pull request from the lesson branch to dev (don't close it yet)&nbsp;</li><li>&nbsp;Create an m6_submission.md file in the same directory as the flask sample app&nbsp;</li><li>&nbsp;Fill in the deliverables below&nbsp;</li><li>&nbsp;Generate the markdown and paste the content into the new md file&nbsp;</li><li>&nbsp;git add/commit/push&nbsp;</li><li>&nbsp;Complete the pull request&nbsp;</li><li>&nbsp;Create a pull request from dev to prod&nbsp;</li><li>&nbsp;Complete the merge&nbsp;</li><li>&nbsp;Locally checkout dev&nbsp;</li><li>&nbsp;git pull the latest dev changes&nbsp;</li><li>&nbsp;On GitHub navigate to the location of the m6_submission.md file from the prod branch&nbsp;</li><li>&nbsp;Grab that direct link and submit it to Canvas</li></ol></td></tr></table>
+<table><tr><td> <em>Deliverable 1: </em> Proof App has been deployed </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
+<tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshot the output of the app (including the url) showing it's running from Heroku dev</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://firebasestorage.googleapis.com/v0/b/learn-e1de9.appspot.com/o/assignments%2Fdg574%2F2023-12-15T05.11.29image.png.webp?alt=media&token=18173588-a039-44ae-8aa5-05d33a74e3f2"/></td></tr>
+<tr><td> <em>Caption:</em> <p>Works good!<br></p>
+</td></tr>
+</table></td></tr>
+<tr><td> <em>Sub-Task 2: </em> Add a direct link to the app here (prod url)</td></tr>
+<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://dg574-is601-flask-sample-prod-f2eee8bf3773.herokuapp.com/">https://dg574-is601-flask-sample-prod-f2eee8bf3773.herokuapp.com/</a> </td></tr>
+</table></td></tr>
+<table><tr><td> <em>Deliverable 2: </em> Misc </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
+<tr><td><table><tr><td> <em>Sub-Task 1: </em> Add a link to the pull request from Flask-Sample-HW to Dev</td></tr>
+<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://github.com/dslisanoob/is601-dg574-2023/pull/17">https://github.com/dslisanoob/is601-dg574-2023/pull/17</a> </td></tr>
+<tr><td> <em>Sub-Task 2: </em> Did you have any issues during setup and if so how did you resolve them, otherwise what did you learn?</td></tr>
+<tr><td> <em>Response:</em> <p>Yes, I had to rename test.py to test_dummy.py to make it work, along<br>with the function name to test_dummy. I am not sure why it doesnt<br>pick test.py by default.<br><br></p><br></td></tr>
+</table></td></tr>
+<table><tr><td> <em>Deliverable 3: </em> Readings </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
+<tr><td><table><tr><td> <em>Sub-Task 1: </em> What can you tell me about docker? Describe the various steps needed to get an app ran inside a docker container in your own words</td></tr>
+<tr><td> <em>Response:</em> <p>Docker is a virtualization tool that lets developers manage, deploy, and test different<br>applications separately.<br>The prerequisites must be listed before an application can be run inside<br>a docker. The instructions list needed to run the application must then be<br>written in a dockerfile for the application. A specific base image is used<br>to run each dockerfile. Images from private repositories, Docker Hub, or the local<br>system can be specified. Docker build builds new images using this dockerfile and<br>the docker build command. There are no dependencies when using these images as<br>Docker containers anywhere.<br></p><br></td></tr>
+<tr><td> <em>Sub-Task 2: </em> What is Heroku? Why do you feel it was chosen for this class?</td></tr>
+<tr><td> <em>Response:</em> <p>Heroku is a cloud application platform that can be accessed from any location<br>and is used to deploy apps on a cloud network. Other PaaS platforms,<br>like AWS, Azure, and GCP, are also widely accessible. Heroku, in my opinion,<br>was selected for this course because of its advantages for students and its<br>simple github workflow integration. Heroku serves as the platform for our CI/CD processes.<br></p><br></td></tr>
+<tr><td> <em>Sub-Task 3: </em> What is flask? List a few things you learned about it</td></tr>
+<tr><td> <em>Response:</em> <p>A Python web framework called Flask is used to create web applications. It<br>supports templating with Jinja2 and has an integrated development server. When integrating the<br>front end and back end, this feature comes in handy.<br></p><br></td></tr>
+<tr><td> <em>Sub-Task 4: </em> What is the difference between a Dockerfile and a Github Action .yml file?</td></tr>
+<tr><td> <em>Response:</em> <p>To specify instructions to be executed on top of a base image, use<br>a dockerfile. This dockerfile is used to create a docker image. On the<br>other hand, github workflow configuration is done via a github action yml file.<br>You can set up a github action file to monitor a few branches<br>and to take certain actions when changes are made to those branches. In<br>our instance, workflows have been established and images have been deployed to Heroku<br>using github actions to implement CI/CD.<br></p><br></td></tr>
+</table></td></tr>
+<table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-007-F23/sample-flask-app-and-readings/grade/dg574" target="_blank">Grading</a></td></tr></table>
