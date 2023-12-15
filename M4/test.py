@@ -45,7 +45,7 @@ def test_many_div():
     ]
     for d in data:
         assert calc.div(d["a"], d["b"]) == int(d["r"])
-
+# Dhruv Gargi - dg574 - 10th Nov 2023
 @pytest.fixture
 def my_calc_ans_add():
     # Fixture for testing addition using the 'ans' attribute
@@ -56,7 +56,7 @@ def my_calc_ans_add():
         {"a": "ans", "b": "1", "r": "10"},
         {"a": "ans", "b": "1", "negative": True, "r": "1"}
     ]
-
+# Dhruv Gargi - dg574 - 10th Nov 2023
 def test_data_ans_add(my_calc_ans_add):
     # Test addition using the 'ans' attribute
     for d in my_calc_ans_add:
@@ -94,7 +94,7 @@ def my_calc_ans_mult():
         {"a": "ans", "b": "1", "r": "100"},
         {"a": "ans", "b": "1", "negative": True, "r": "1"}
     ]
-
+# Dhruv Gargi - dg574 - 10th Nov 2023
 def test_data_ans_mult(my_calc_ans_mult):
     # Test multiplication with 'ans'
     for d in my_calc_ans_mult:
@@ -113,7 +113,7 @@ def my_calc_ans_div():
         {"a": "ans", "b": "1", "r": "2"},
         {"a": "ans", "b": "1", "negative": True, "r": "1"}
     ]
-
+# Dhruv Gargi - dg574 - 10th Nov 2023
 def test_data_ans_div(my_calc_ans_div):
     # Test division using 'ans'
     for d in my_calc_ans_div:

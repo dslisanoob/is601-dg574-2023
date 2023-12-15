@@ -30,6 +30,7 @@ class MyCalc:
         else:
             raise ValueError("Not a number")
 
+# Dhruv Gargi - dg574 - 10th Nov 2023
     def add(self, num1: str, num2: str) -> float:
         # Add two numbers, using 'ans' as previous answer if specified
         if num1 == "ans":
@@ -38,7 +39,7 @@ class MyCalc:
             num1, num2 = self._as_number(num1), self._as_number(num2)
             self.ans = num1 + num2
             return self.ans
-
+# Dhruv Gargi - dg574 - 10th Nov 2023
     def sub(self, num1: str, num2: str) -> float:
         # Subtract num2 from num1, using 'ans' as num1 if specified
         if num1 == "ans":
@@ -63,7 +64,7 @@ class MyCalc:
             return self.div(self.ans, num2)
         else:
             num1, num2 = self._as_number(num1), self._as_number(num2)
-            if num2 == 0:
+            if int(num2) == 0:
                 raise ZeroDivisionError("Can't divide by zero")
             self.ans = num1 / num2
             return self.ans
