@@ -8,9 +8,17 @@ def process_array(num, arr):
     print("\nProcessing Array({}): \n\n".format(num))
     print(arr)
     print("\nPositive Output:\n")
-    # Note: use the arr variable; don't directly refer to a1-a4 variables
+    tmp = []
+    for i in arr:
+        if float(i)>0:
+            tmp.append(i)
+        else:
+            if type(i) in [int, float]:
+                tmp.append(i * -1) 
+            else:
+                tmp.append(type(i)(int(i) * -1))
+    print(tmp)
     # TODO add new code here to print the desired result
-    # TODO include the type() of the output data to ensure the result is positive AND the same datatype as the input value
 
 
 print("Problem 3")
